@@ -1,7 +1,6 @@
 <!doctype html>
 <html lang="en">
-<!-- before use any static file -->
-{% load staticfiles %}
+    {% load staticfiles %}
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -9,14 +8,14 @@
     <meta name="author" content="">
     <link rel="icon" href="../../../../favicon.ico">
 
-    <title>Home Page - Esmaeel Komijani</title>
+    <title>{{blog_detail.title}} - Esmaeel Komijani</title>
 
     <!-- Bootstrap core CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B"
         crossorigin="anonymous">
-
+        <link rel="stylesheet" href="{% static 'album.css' %}">
     <!-- Custom styles for this template -->
-    <link rel="stylesheet" href="{% static 'album.css' %}">
+  
 </head>
 
 <body>
@@ -69,41 +68,30 @@
 
     <main role="main">
 
-        <section class="jumbotron text-center">
-            <div class="container">
-                <h1 class="jumbotron-heading">Front-End Coder</h1>
-                <img src="{% static 'Esmaeel.jpg' %}" alt="Esmaeel.jpg" class="img-fluid">
-                <p class="pt-4 lead text-muted">I I started front end coding in my Associate degree Semester 3
-                    with my web developing class and then i realize how fun it is and i decided to 
-                    be good at this and now days i learned vuejs and i am learning reactjs and python/django.</p>
-                <p>
-                    <a href="mailto: esmaeelkomijani@gmail.com" class="btn btn-primary my-2">Email Me ?</a>
-                    
-                </p>
-            </div>
-        </section>
-
-        <div class="album py-5 bg-light">
-            <div class="container">
-                <h1 class="text-center pb-5">Jobs</h1>
+        <div class="container">
+            <header class="text-center pt-5 pb-5">
+                <h1>{{blog_detail.title}}</h1>
+                <small>{{blog_detail.pub_date}}</small>
+            </header>
+            <section class="">
+                
+                <hr>
                 <div class="row">
-                    {% for job in jobs.all %}
-
-                    <div class="col-md-4">
-                        <div class="card mb-4 box-shadow">
-                            <img class="card-img-top" src="{{ job.image.url }}" alt="Card image cap">
-                            <div class="card-body">
-                                <p class="card-text">
-                                    {{job.summary}}
-                                </p>
-                            </div>
-                        </div>
+                    <div class="image-container">
+                        <img class="img-fluid mx-auto d-block" src="{{blog_detail.image.url}}" alt="image of {{blog_detail.title}}">
                     </div>
-                    {% endfor %}
+                    
+                    <div class="pt-5">
+                        <p>
+                            <strong>post summary: {{blog_detail.summary}}</strong>
+                        </p>
+                        <p>
+                            {{blog_detail.body}}
+                        </p>
+                    </div>
                 </div>
-            </div>
+            </section>
         </div>
-
     </main>
 
     <footer class="text-muted">
@@ -126,7 +114,7 @@
     </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
         crossorigin="anonymous"></script>
-   
+    <script src="./holder.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js" integrity="sha384-o+RDsa0aLu++PJvFqy8fFScvbHFLtbvScb8AjopnFD+iEQ7wo/CG0xlczd+2O/em"
         crossorigin="anonymous"></script>
 </body>
